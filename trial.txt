@@ -1,0 +1,4 @@
+2025-05-07 12:00:40,255 10ms
+2025-05-07 12:00:40,255 Results saved to ('bold', 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads')10
+2025-05-07 12:00:40,255 Speed: %.1fms pre-process, %.1fms inference, %.1fms NMS per image at shape 
+2025-05-07 12:00:40,256 Just an information
