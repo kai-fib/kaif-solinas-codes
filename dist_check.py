@@ -1,125 +1,132 @@
-# import easyocr
-# import re
-# reader = easyocr.Reader(['en']) # this needs to run only once to load the model into memory
-# img = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\check_3.png"
-# results = reader.readtext(img, detail = 0)
-# for text in results:
-#     matchp = re.search(pattern, text.replace('\xa0', ' ').strip())
-#     if matchp is None:
-#         dist_bot = "0.0 m"
-#     else:
-#         dist_bot =  matchp.group()
-# print(results)
-
-
-
-
-
-# import easyocr
-# import re
-
-# reader = easyocr.Reader(['en'])  # Load model
-# img = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\sample_1.png"
-# pattern = r"\d+\.\d+\s*(?:[mM]|[Ff][Tt])"
-
-# results = reader.readtext(img, detail=0)
-
-# print("OCR Results:")
-# for text in results:
-#     print(f"- OCR Text: '{text}'")  # Print raw text
-#     matchp = re.search(pattern, text.replace('\xa0', ' ').strip())
-#     if matchp:
-#         print(f"  ✅ Match: {matchp.group()}")
-#     else:
-#         print("  ❌ No match")
-
-# # Optional: return the first valid match (instead of overwriting dist_bot)
-# dist_bot = "0.0 m"
-# for text in results:
-#     matchp = re.search(pattern, text.replace('\xa0', ' ').strip())
-#     if matchp:
-#         dist_bot = matchp.group()
-#         break
-
-# print("Final extracted distance:", dist_bot)
-
-# import easyocr
-# import re
-
-# reader = easyocr.Reader(['en'])  # Load the OCR model
-# img = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\check_2.png"
-
-# # Define both patterns
-# pattern1 = r"\d+\.\d+\s*(?:[mM]|[Ff][Tt])"        # e.g., 003.0 m or 12.5 FT
-# pattern2 = r"[O0]{2,3}\.0\s*[mM]"                # e.g., OO3.0 m (OCR mistake)
-
-# results = reader.readtext(img, detail=0)
-
-# dist_bot = "0.0 m"  # default if no match found
-
-# for text in results:
-#     cleaned_text = text.replace('\xa0', ' ').strip()
-
-#     match1 = re.search(pattern1, cleaned_text)
-#     match2 = re.search(pattern2, cleaned_text)
-
-#     if match1:
-#         dist_bot = match1.group()
-#         break
-#     elif match2:
-#         dist_bot = match2.group()
-#         break
-
-# print("Final extracted distance:", dist_bot)
-
-
-# import easyocr
-# import re
-
-# reader = easyocr.Reader(['en'])  # this needs to run only once to load the model into memory
-# img = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\check_3.png"
-
-# # Robust regex to match distance with unit like '001.1 m', '003.0m', '000.11M', '1.2 ft', etc.
-# pattern = r"\b\d{1,4}\.\d{1,2}\s*(?:m|M|ft|FT|Ft)\b"
-
-# results = reader.readtext(img, detail=0)
-
-# for text in results:
-#     text = text.replace('\xa0', ' ').replace('~', '').replace('O', '0').replace('o', '0').strip()
-#     matchp = re.search(pattern, text)
-#     if matchp is None:
-#         dist_bot = "0.0 m"
-#     else:
-#         dist_bot = matchp.group()
-#         break
-
-# print(results)
-# print("Distance detected:", dist_bot)
-
-
+prev = '0202.50 ft'
 import easyocr
 import re
-# reader = easyocr.Reader(['en'])  # this needs to run only once to load the model into memory
-# mid_frame = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\sample_1.png"
+reader = easyocr.Reader(['en'])  # this needs to run only once to load the model into memory
+mid_frame = r"C:\Users\Kaif Ibrahim\Downloads\(OB,3)_(NA)_(0-3-40)_(51.9m)_(WL).png"
+results = reader.readtext(mid_frame, detail=0)
 
-# results = reader.readtext(mid_frame, detail=0)
 dist_bot = "0.0 m"
-results = ['05/28/2025 12.37.37', 'BrokenB,.4L', 'OOOOO.11M','mumbai']
-
 for j, text in enumerate(results):
     text = text.replace('\xa0', ' ').replace('~', '').replace('O', '0').replace('o', '0').strip()
     
     # Merge with next token if it's a unit
     if j + 1 < len(results) and re.match(r"^(m|M|ft|FT|Ft)$", results[j + 1].strip()):
-        text += results[j + 1].strip()
-    
+        #text += results[j + 1].strip()
+        text = text + ' ' + results[j + 1].strip()                                                    
     matchp = re.search(r"\b\d{1,5}\.\d{1,2}\s*(?:m|M|ft|FT|Ft)\b", text)
     if matchp:
         dist_bot = matchp.group()
         break
-print(results)
+# num = results[1].replace("@","f").split()
 print(dist_bot)
 
-# results = ['SOLINAS', '11/06/2025 06:15.33', '003.1', 'm', 'ID 123456789', 'Pre-Con, GIS 19.863924,75.316400', '200 mm AC Water pipe', 'Northeast', 'Bansilal NAgar, Raj Nagar', 'Pipe 19.863924,75.316400', 'Oo', 'Se9; 19.863924,75.316400', '00']
+
+
+# import easyocr
+# import re
+# reader = easyocr.Reader(['en'])  # this needs to run only once to load the model into memory
+# mid_frame = r"C:\Users\Kaif Ibrahim\Downloads\Sludge_Accumulation(DES,3)_(0-0-40)_(0.0 m).png"
+# results = reader.readtext(mid_frame, detail=0)
+# dist_bot = "0.0 m"
+# ref_format = None
+
+# for j, text in enumerate(results):
+#     text = text.replace('\xa0', ' ').replace('~', '').replace('O', '0').replace('o', '0').strip()
+
+#     matchp = re.search(r"(?:\b\s*\-?\d{1,5}\.\d{1,2}\s*(?:m|M|ft|FT|Ft)\b)|(?:(?:FEET|Feet|feet|Mile|MILE|mile)[:=]\s*\-?\d{1,5}\.\d{1,2}\b)", text)
+#     if matchp:
+#         dist_bot = matchp.group()
+#         dist_float=float(re.search(r"[-+]?\d+\.\d+|[-+]?\d+",dist_bot).group())#to extract the distance
+#         current_distance_found = True
+#         break
+
+#     if j!=0 and re.match(r"^(FEET[:=]|Feet[:=]|feet[:=]|Mile[:=]|MILE[:=]|mile[:=])$", results[j - 1].strip()): #pre-fix 
+#         text+=results[j-1].strip()
+    
+#     matchp = re.search(r"(?:\b\s*\-?\d{1,5}\.\d{1,2}\s*(?:m|M|ft|FT|Ft)\b)|(?:(?:FEET|Feet|feet|Mile|MILE|mile)[:=]\s*\-?\d{1,5}\.\d{1,2}\b)", text)
+#     if matchp:
+#         dist_bot = matchp.group()
+#         break
+
+#     # Merge with next token if it's a unit
+#     if j + 1 < len(results) and re.match(r"^(m|M|ft|FT|Ft)$", results[j + 1].strip()): # suffix 
+#         text += results[j + 1].strip()
+    
+#     matchp = re.search(r"(?:\b\s*\-?\d{1,5}\.\d{1,2}\s*(?:m|M|ft|FT|Ft)\b)|(?:(?:FEET|Feet|feet|Mile|MILE|mile)[:=]\s*\-?\d{1,5}\.\d{1,2}\b)", text)
+#     if matchp:
+#         dist_bot = matchp.group()
+
+#                 # Store the format of the first valid result as reference
+#         if ref_format is None:
+#             ref_format = dist_bot  # e.g., '0202.50 ft'
+#         break
+
+
+#     elif ref_format is not None and re.match(r'^\d{6}\s*(ft|FT|Ft|m|M)?$', text):
+#         digits = re.search(r'\d{6}', text).group()
+#         unit = re.search(r'(ft|FT|Ft|m|M)', text)
+#         unit = unit.group() if unit else ref_format[-2:]  # fallback to unit in reference
+
+#         # Use decimal position from ref_format (e.g. 4 digits + 2 decimals)
+#         parts = ref_format.split('.')[0]  # get '0202' from '0202.50 ft'
+#         decimal_pos = len(parts)
+
+#         dist_bot = f"{digits[:decimal_pos]}.{digits[decimal_pos:]} {unit}"
+
+# print(results)
+# print(dist_bot)
 
 # print(results[1].strip())
+
+
+# import easyocr
+# import re
+# import os
+
+# reader = easyocr.Reader(['en'])  # Load once
+# ref_format = None
+# folder_path = r"C:\Users\Kaif Ibrahim\Desktop\sample"
+
+# for filename in sorted(os.listdir(folder_path)):
+#     if not filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+#         continue
+
+#     image_path = os.path.join(folder_path, filename)
+#     print(f"\nProcessing: {filename}")
+    
+#     results = reader.readtext(image_path, detail=0)
+#     dist_bot = "0.0 m"
+
+#     for j, text in enumerate(results):
+#         text = text.replace('\xa0', ' ').replace('~', '').replace('O', '0').replace('o', '0').strip()
+
+#         # Combine with previous if unit keyword
+#         if j != 0 and re.match(r"^(FEET[:=]|Feet[:=]|feet[:=]|Mile[:=]|MILE[:=]|mile[:=])$", results[j - 1].strip()):
+#             text += results[j - 1].strip()
+
+#         # Merge with next token if it's a unit
+#         if j + 1 < len(results) and re.match(r"^(m|M|ft|FT|Ft)$", results[j + 1].strip()):
+#             text += results[j + 1].strip()
+
+#         # Match properly formatted distances
+#         matchp = re.search(r"(-?\d{1,5}\.\d{1,2})\s*(m|M|ft|FT|Ft)|(?:FEET|Feet|feet|Mile|MILE|mile)[:=]\s*(-?\d{1,5}\.\d{1,2})", text)
+#         if matchp:
+#             dist_bot = matchp.group()
+#             if ref_format is None:
+#                 ref_format = dist_bot
+#             break
+
+#         # If bad format like '032220ft' and reference is available
+#         elif ref_format is not None and re.match(r'^\d{6}\s*(ft|FT|Ft|m|M)?$', text):
+#             digits = re.search(r'\d{6}', text).group()
+#             unit = re.search(r'(ft|FT|Ft|m|M)', text)
+#             unit = unit.group() if unit else ref_format[-2:]
+#             decimal_pos = len(ref_format.split('.')[0])
+#             dist_bot = f"{digits[:decimal_pos]}.{digits[decimal_pos:]} {unit}"
+#             break
+#     print("OCR Results:", results)
+
+#     print("Detected Distance:", dist_bot)
+
+
+not_satisfy = ['0202 50 ft','ILCI: + 0182.40 @t']
