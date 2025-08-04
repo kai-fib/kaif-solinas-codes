@@ -2,12 +2,13 @@ prev = '0202.50 ft'
 import easyocr
 import re
 reader = easyocr.Reader(['en'])  # this needs to run only once to load the model into memory
-mid_frame = r"C:\Users\Kaif Ibrahim\Downloads\(OB,3)_(NA)_(0-3-40)_(51.9m)_(WL).png"
+mid_frame = r"C:\Users\Kaif Ibrahim\Pictures\vlcsnap-2025-08-04-11h39m36s111.png"
 results = reader.readtext(mid_frame, detail=0)
+print(results)
 
 dist_bot = "0.0 m"
 for j, text in enumerate(results):
-    text = text.replace('\xa0', ' ').replace('~', '').replace('O', '0').replace('o', '0').strip()
+    text = text.replace('\xa0', ' ').replace(',','.').replace('~', '').replace('O', '0').replace('o', '0').strip()
     
     # Merge with next token if it's a unit
     if j + 1 < len(results) and re.match(r"^(m|M|ft|FT|Ft)$", results[j + 1].strip()):
