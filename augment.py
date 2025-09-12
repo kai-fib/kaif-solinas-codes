@@ -7,8 +7,8 @@ import os
 from os.path import isfile, join
 
 
-input_path = "C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/Video_dataset/Revamp-V9/water_2.1.0/images/ad_sewer/"  # Input folder
-output_path = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/Video_dataset/Revamp-V9/water_2.1.0/images/ad_sewer/aug_ad/'  # Output folder for augmented images
+input_path = r"D:\Sewer_ML\consolidated_class_wise\ad"  # Input folder
+output_path = r"D:\Sewer_ML\consolidated_class_wise\Augmented_data\aug_ad\ "  # Output folder for augmented images
 
 valid_exts = ('.jpg', '.jpeg', '.png', '.bmp', '.tiff')
 onlyfiles = [
@@ -26,17 +26,17 @@ for n in range(len(onlyfiles)):
     data = img_to_array(img)
     samples = expand_dims(data, 0)
 
-    datagen = ImageDataGenerator(fill_mode='constant',brightness_range=[0.7,1.0],shear_range=0.3)
-
-    
+    datagen = ImageDataGenerator(fill_mode='constant',shear_range=0.5,rotation_range=10,brightness_range=[0.6, 1],horizontal_flip=True) 
+    #datagen = ImageDataGenerator( rotation_range=10, fill_mode='constant', brightness_range=[0.6, 1], shear_range=0.3,horizontal_flip=True )
+    #datagen = ImageDataGenerator(rotation_range=7,fill_mode='constant',brightness_range=[0.6,1.3],shear_range=0.3)    
     it = datagen.flow(samples, batch_size=1)
 
     #koif make 5 aug image
-    for i in range(6):
+    for i in range(5):
         batch = next(it)
         image = batch[0].astype('uint8')
         
         
-        output_image_path = f'{output_path}Back_{n}_{i+1:04}.jpg'
+        output_image_path = f'{output_path}Attached_Deposit_{n}_{i+1:04}.jpg'
         cv2.imwrite(output_image_path, cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
         print(f"Saved: {output_image_path}")
