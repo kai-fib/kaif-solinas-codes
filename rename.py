@@ -43,14 +43,14 @@
 import os
 
 # Define the directory containing the files
-directory = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/Video_dataset/Revamp-V9/water_2.1.0/images/ad_sewer/aug_ad/'
+directory = "D:/Sewer_ML/Annotated_data/Ob_annot/Stone/"
 
 # List all .txt files in the directory and sort them
-files = sorted([f for f in os.listdir(directory) if f.endswith('.jpg')])
+files = sorted([f for f in os.listdir(directory) if f.endswith('.txt')])
 
 # Loop through all files and rename them with a new sequential name
-for i, filename in enumerate(files, start=156):
-    new_filename = f"Attached_deposit_s_{i:05}.jpg"
+for i, filename in enumerate(files, start=10036):
+    new_filename = f"stone_{i:05}.txt"
     
     # Define full paths
     old_filepath = os.path.join(directory, filename)
