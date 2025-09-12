@@ -89,9 +89,24 @@ def update_class_id(input_dir, output_dir, old_class_id, new_class_id):
 # Example usage
 #input_file = 'labels.txt'  # Input YOLO label file
 #output_file = 'updated_labels.txt'  # Output file with updated class IDs
-input_dir = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/Stage-III(Dataset)/wrc_water_2.2.0/labels/val/'
-output_dir = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/Stage-III(Dataset)/wrc_water_2.2.0/labels/val/'
-old_class_id = 18  # Class ID to replace
-new_class_id = 16  # New class ID
+input_dir = r'C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\Stage-III(Dataset)\wrc_sewer_3.0.0\labels\train'
+output_dir = r'C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\Stage-III(Dataset)\wrc_sewer_3.0.0\labels\train'
+old_class_id = 19 # Class ID to replace
+new_class_id = 0  # New class ID
 
 update_class_id(input_dir, output_dir, old_class_id, new_class_id)
+
+
+#   0: Attached_deposit(DEZ,3)         19 -> 0
+#   1: Hole(H,3)                      nope sewer
+#   2: Joint_Displacement(JD,3)        13 -> 2
+#   3: Surface_damage(S,2)          **no change**
+#   4: Root(R,3)                    **no change**
+#   5: Settled_Deposits(DE,3)        17 -> 5
+#   6: Other Obstacles(OB,3))        st(6),PB(7),CB(8) -> 6
+#   7: Fracture(F,3)                 9 ->  7
+#   8: Infiltration(I,4)             10 -> 8
+#   9: Deformed(D,3)                 11 -> 9
+#   10: Crack(C,2)                   12 -> 10
+#   11: Broken(B,4)                  14 -> 11
+#   12: Collapse(XP,5)               15 -> 12
