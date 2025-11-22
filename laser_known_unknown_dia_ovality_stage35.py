@@ -185,10 +185,10 @@ import math
 
 #import math
 
-input_path = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/najiya/original_images/'
+input_path = "D:/laser_image/"
 #D:/P2_laser profiling/2902_mds_final_unknown_dia/small_wheel/mds_390/
-output_path_rgb = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/najiya/output_rgb1/'
-output_path_format = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/najiya/output_sample1/'
+output_path_rgb = "D:/output_rgb/"
+# output_path_format = 'C:/Users/Kaif Ibrahim/Desktop/solinas_downloads/najiya/output_sample1/'
 #output_path_bw = 'C:/Users/User/Desktop/laser_field/20240529_215416_1_fold/processed_bw/'
 
 
@@ -197,7 +197,7 @@ diameter_known = 1
 img_list = listdir(input_path)
 PPM = None
 #PPM = 1.7623276664724357
-orig_dia_mm = 390
+orig_dia_mm = 1200
 
 R_pix =[] # radius in pixels
 D_mm = []

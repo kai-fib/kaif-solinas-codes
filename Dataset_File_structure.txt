@@ -1,0 +1,14 @@
+/datasets/
+└─wrc_sewer_3.0.0/    # Dataset root
+  ├─images/
+  │ ├─train/          # Training images
+  │ │ ├─Broken_0001.jpg
+  │ │ └─...
+  │ └─val/            # Validation images (80% train / 20% val split)
+  │   └─...
+  └─labels/
+    ├─train/          # Training labels
+    │ ├─Broken_0001.txt
+    │ └─...
+    └─val/            # Validation labels (optional if separate set used)
+      └─...

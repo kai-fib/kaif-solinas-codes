@@ -5,21 +5,21 @@ import xml.etree.ElementTree as ET
 
 #wrc
 class_name_to_id_mapping = {
-
-"Attached_deposit(DEZ,3)": 0,
-"Hole(H,3)": 1,
-"Joint_Displacement(JD,3)": 2,
-"Surface_damage(S,2)": 3,
-"Root(R,3)": 4,
-"Settled_Deposits(DE,3)": 5,
-"Other_Obstacles(OB,3)": 6,
-"Fracture(F,3)": 7,
-"Infiltration(I,4)": 8,
-"Deformed(D,3)": 9,
-"Crack(C,2)": 10,
-"Broken(B,4)": 11,
-"Collapse(XP,5)": 12,
-
+    "Attached_deposit(DEZ,3)": 0,
+    "Ferrule(H,4)": 1,
+    "Joint_Displacement(JDL,4)": 2,
+    "Surface_damage(SW,2)": 3,
+    "Root(RM,3)": 4,
+    "Settle_deposit(DES,3)": 5,
+    "Stone(OBB,4)": 6,
+    "Partial_Blockage(OBP,3)": 7,
+    "Complete Blockage(OBZ,4)": 8,
+    "Fracture(F,4)": 9,
+    "Infiltration(IR,3)": 10,
+    "Deformed(D,3)": 11,
+    "Crack(C,2)": 12,
+    "Collapse(XP,5)": 13,
+    "Broken(B,4)": 14
 }
 
 # class_name_to_id_mapping = {
@@ -172,7 +172,7 @@ def convert_folder_to_yolo(xml_folder, class_name_to_id_mapping):
             convert_pascal_voc_to_yolo(xml_file, class_name_to_id_mapping)
 
 # Example usage
-xml_folder = "D:/Sewer_ML/Annotated_data/Ob_annot/Stone/"
+xml_folder = r"D:\class_wise\2.3.3\new\3\train"
 
 #D:/SOLINAS DOWNLOADS/Part-2 augmentation/sluge/xml_sluge_Nassco
 convert_folder_to_yolo(xml_folder, class_name_to_id_mapping)

@@ -44,23 +44,59 @@ def update_class_ids(input_dir, output_dir, id_mapping):
 
 
 # Example usage
-input_dir = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\Stage-III(Dataset)\wrc_sewer_3.0.0\labels\train"
-output_dir = r"C:\Users\Kaif Ibrahim\Desktop\solinas_downloads\Stage-III(Dataset)\wrc_sewer_3.0.0\labels\train"
+input_dir = r"D:\class_wise\3.3.0\9(deform)\train"
+output_dir = r"D:\class_wise\3.3.0\9(deform)\train"
 
 # Mapping dictionary: old_id -> new_id
 id_mapping = {
-    19: 0,
-    18: 0,
-    13: 2,
-    17: 5,
-    7: 6, 8: 6,
-    9: 7,
-    10: 8,
-    11: 9,
-    12: 10,
-    14: 11,
-    15: 12,
-    16: 0
+    # 19:0,
+    # 13:2,
+    # 17:5,
+    # 6:6,
+    # 9:7,
+    # 10:8,
+    # 11:9,
+    # 12:10,
+    # 14:11,
+    # 15:12,
+    # 7: 13,
+    # 8: 14,
+
+    # """2.2.0 to 3.3.0"""
+    # 0:0,
+    # 1:1,
+    # 2:13,
+    # 3:3,
+    # 4:4,
+    # 5:5,
+    # 6:6,
+    # 7:9,
+    # 8:10,
+    # 9:11,
+    # 10:12,
+    # 11:14,
+    # 12:15,
+    # 13:7,
+    # 14:8,
+
+
+    #changes to be made 3.3.0 to 2.3.1
+    0:0,
+    1:1,
+    2:2,
+    3:3,
+    4:4,
+    5:5,
+    6:6,
+    7:9,
+    8:10,
+    9:11,
+    10:12,
+    11:14,
+    12:13,
+    13:7,
+    14:8
+
 }
 
 update_class_ids(input_dir, output_dir, id_mapping)
