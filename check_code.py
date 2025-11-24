@@ -22,7 +22,7 @@ def count_class_ids(input_dir):
 
 # Example usage
 count_class_ids(
-    r"D:\dataset\wrc_sewer_2.3.3\labels\val"
+    r"D:\dataset\wrc_sewer_2.3.4\labels\val"
 )
 
 

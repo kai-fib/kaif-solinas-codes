@@ -17,6 +17,7 @@ class_name_to_id_mapping = {
     "Fracture(F,4)": 9,
     "Infiltration(IR,3)": 10,
     "Deformed(D,3)": 11,
+    "11: Deformed(D,3)": 11,
     "Crack(C,2)": 12,
     "Collapse(XP,5)": 13,
     "Broken(B,4)": 14
@@ -172,7 +173,7 @@ def convert_folder_to_yolo(xml_folder, class_name_to_id_mapping):
             convert_pascal_voc_to_yolo(xml_file, class_name_to_id_mapping)
 
 # Example usage
-xml_folder = r"D:\class_wise\2.3.3\new\3\train"
+xml_folder = r"D:\class_wise\2.3.4\11\val"
 
 #D:/SOLINAS DOWNLOADS/Part-2 augmentation/sluge/xml_sluge_Nassco
 convert_folder_to_yolo(xml_folder, class_name_to_id_mapping)

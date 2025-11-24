@@ -40,20 +40,20 @@ def copy_matching_txts(image_dir, txt_source_dir, output_dir):
 
     # Get all image base names (without extensions)
     image_bases = {os.path.splitext(f)[0] for f in os.listdir(image_dir)
-                   if f.lower().endswith(('.txt'))}
+                   if f.lower().endswith(('.jpg'))}
 
     copied = 0
     for base in image_bases:
-        txt_file = os.path.join(txt_source_dir, base + '.jpg')
+        txt_file = os.path.join(txt_source_dir, base + '.txt')
         if os.path.exists(txt_file):
-            shutil.move(txt_file, os.path.join(output_dir, base + '.jpg'))
+            shutil.copy(txt_file, os.path.join(output_dir, base + '.txt'))
             copied += 1
 
     print(f"✅ Copied {copied} .txt files to '{output_dir}'")
 
 # ---------------- Example usage ----------------
-image_dir = r"D:\class_wise\2.3.4\11\val" # pull the deform images next
-txt_source_dir = r"D:\dataset\wrc_sewer_2.3.4\images\val"
-output_dir = r"D:\class_wise\2.3.4\11\val"
+image_dir = r"D:\class_wise\2.3.4\New_11\train\d\old_txt" # pull the deform images next
+txt_source_dir = r"D:\class_wise\2.3.4\old_11\val"
+output_dir = r"D:\class_wise\2.3.4\New_11\train\d\old_txt"
 
 copy_matching_txts(image_dir, txt_source_dir, output_dir)

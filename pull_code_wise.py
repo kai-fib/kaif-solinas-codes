@@ -65,8 +65,8 @@ def pull_class_id_files(input_dir, output_dir, target_class_id):
 
 
 # ---------------- Example usage ----------------
-input_dir = r"D:\dataset\wrc_sewer_2.3.4\labels\val"
-output_dir = r"D:\class_wise\2.3.4\11\val"
+input_dir = r"D:\dataset\wrc_sewer_2.3.4\wrc_sewer_2.3.4\labels\train"
+output_dir = r"D:\class_wise\2.3.4\old_11\train"
 target_class_id = 11
 
 pull_class_id_files(input_dir, output_dir, target_class_id)

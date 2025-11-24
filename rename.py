@@ -43,14 +43,14 @@
 import os
 
 # Define the directory containing the files
-directory = "D:/Sewer_ML/Annotated_data/Ob_annot/Stone/"
+directory = r"D:\dataset\roboflow\My First Project.v1i.yolov9\selected_deform"
 
 # List all .txt files in the directory and sort them
-files = sorted([f for f in os.listdir(directory) if f.endswith('.txt')])
+files = sorted([f for f in os.listdir(directory) if f.endswith('.jpg')])
 
 # Loop through all files and rename them with a new sequential name
-for i, filename in enumerate(files, start=10036):
-    new_filename = f"stone_{i:05}.txt"
+for i, filename in enumerate(files, start=160):
+    new_filename = f"z1r_Deformation_{i:05}.jpg"
     
     # Define full paths
     old_filepath = os.path.join(directory, filename)
